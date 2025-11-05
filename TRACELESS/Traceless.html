@@ -1004,8 +1004,8 @@
       <button id="closeProfileInfoBtn"><i class="fas fa-times"></i></button>
     </div>
     <div class="darkverse-slider">
-  <video src="https://files.catbox.moe/ueuks4.mp4" autoplay muted loop></video>
-</div>
+  <img src="https://files.catbox.moe/qh3q7m.jpg" alt="Darkverse Photo">
+  </div>
     <div class="profile-info-content">
       <div class="profile-info-username">${username || 'Unknown'}</div>
       <div class="profile-info-details">
@@ -1040,8 +1040,8 @@
     <div id="attackDashboard" class="dashboard-page active">
         <div class="container profile-card">
         <div class="darkverse-slider">
-  <video src="https://files.catbox.moe/ueuks4.mp4" autoplay muted loop></video>
-</div>
+      <img src="https://files.catbox.moe/qh3q7m.jpg" alt="Darkverse Photo">
+       </div>
             <div class="profile-username">${username || 'Unknown'}</div>
             <div class="profile-details">
           Role: <span>OWNER</span> • Exp: <span>${formattedTime}</span></div>
@@ -1054,9 +1054,9 @@
             <div class="section-title">Select Bug</div>
             <select id="bugSelect">
                 <option value="" disabled selected>Select Bug...</option>
-                <option value="invis">DELAY ANDRO</option>
-                <option value="invis">DELAY IPHONE</option>
-                <option value="invis">BULLDOZER</option>
+                <option value="delay">DELAY ANDRO</option>
+                <option value="delay">DELAY IPHONE</option>
+                <option value="delay">BULLDOZER</option>
             </select>
 
             <button class="execute-button" id="executeBtn"><i class="fas fa-bug"></i> SEND BUG</button>
@@ -1070,7 +1070,7 @@
         <div class="section-title">Music Player</div>
 
         <div class="song-title" id="songTitle">
-            <i class="fas fa-headphones-alt"></i> Lagu: Chill House Mix
+            <i class="fas fa-headphones-alt"></i> Lagu: Jiwa yang bersedih
         </div>
 
         <div class="player-controls">
@@ -1213,8 +1213,7 @@
 
     <!-- 🖼️ SLIDER FOTO + TEKS DI ATAS FOTO - FIXED SIZE -->
     <div class="darkverse-slider">
-  <video src="https://files.catbox.moe/ueuks4.mp4" autoplay muted loop></video>
-
+  <img src="https://files.catbox.moe/qh3q7m.jpg" alt="Darkverse Photo">
   <div class="darkverse-text-overlay">
     <h2>TRACELESS APPS</h2>
     <p>Buy Access Chat <span>@DryzxModders</span></p>
@@ -1222,30 +1221,32 @@
 </div>
 
     <style>
-      .darkverse-slider {
+.darkverse-slider {
   position: relative;
   width: 100%;
-  max-width: 420px; /* dari video-brand */
+  max-width: 420px;
   border-radius: 18px;
-  border: 2px solid var(--glass-border, #3F0A5E); /* fallback warna kalau var belum didefinisikan */
+  border: 2px solid var(--glass-border, #3F0A5E);
   box-shadow: 0 0 20px rgba(138, 99, 210, 0.3);
   overflow: hidden;
   margin: 0 auto 20px;
-  aspect-ratio: 16/9; /* biar proporsional */
+  aspect-ratio: 16/9;
   background: #000;
   transition: all 0.3s ease;
 }
 
-.darkverse-slider video {
+/* Untuk foto */
+.darkverse-slider img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: cover;       /* biar penuh proporsional */
+  object-position: center; /* posisi tengah */
   display: block;
   filter: brightness(0.9);
   border-radius: 18px;
 }
 
+/* Overlay text (opsional) */
 .darkverse-text-overlay {
   position: absolute;
   bottom: 15px;
@@ -1255,11 +1256,11 @@
   font-family: sans-serif;
 }
 
+/* Efek hover */
 .darkverse-slider:hover {
   transform: scale(1.02);
   box-shadow: 0 0 25px rgba(190, 96, 238, 0.4);
 }
-
       /* 🔮 TEKS DI ATAS FOTO */
       .darkverse-text-overlay {
         position: absolute;
@@ -1425,7 +1426,7 @@
   </div> <div id="popup" class="popup">✅ Success Send Bug</div>
 
   <audio id="backgroundMusic" loop>
-      <source src="https://files.catbox.moe/rm7kaw.mp3" type="audio/mpeg">
+      <source src="https://files.catbox.moe/kfp9be.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
   </audio>
 
@@ -1548,7 +1549,7 @@
         
         if (dashboardId === 'music') {
             musicDashboard.classList.add('active');
-            songTitleDisplay.innerHTML = '<i class="fas fa-headphones-alt"></i> Lagu: Chill House Mix';
+            songTitleDisplay.innerHTML = '<i class="fas fa-headphones-alt"></i> Lagu: Jiwa yang bersedih';
         } else if (dashboardId === 'attack') {
             attackDashboard.classList.add('active');
         } else if (dashboardId === 'ipcheck') {
