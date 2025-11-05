@@ -208,42 +208,39 @@
       }
     }
     
-    .video-brand { 
+    .photo-brand { 
   width: 100%;
   max-width: 420px;
   border-radius: 15px; 
-  border: 2px solid var(--glass-border); 
+  border: 2px solid var(--glass-border, #3F0A5E); /* fallback warna */
   box-shadow: 0 0 20px rgba(138, 99, 210, 0.3); 
   display: block; 
   margin: 0 auto 16px; 
   height: auto;
   aspect-ratio: 16/9;
+  object-fit: cover;       /* isi penuh tanpa distorsi */
+  object-position: center; /* posisi tengah */
   transition: all 0.3s ease;
+}
+
+/* efek hover */
+.photo-brand:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(190, 96, 238, 0.4);
+  filter: brightness(1.05);
 }
   </style>
 </head>
 <body>
   <!-- Asep Rokok Background -->
   <div id="smoke-background"></div>
-  
-  <!-- Video Container -->
-  <div class="video-container" id="videoContainer">
-    <div class="video-wrapper">
-      <!-- Hanya menghapus atribut muted agar suara dapat diputar -->
-      <video class="video-player" id="loginVideo">
-        <source src="https://files.catbox.moe/ueuks4.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-  
   <!-- Login Form dengan Tampilan Dashboard -->
   <div class="app-wrapper">
     <h1 class="main-title">TRACELESS APPS</h1>
     <div class="container profile-card">
-        <video autoplay muted loop class="video-brand">
-          <source src="https://files.catbox.moe/ueuks4.mp4" type="video/mp4">
-        </video>
+        <img src="https://files.catbox.moe/qh3q7m.jpg" 
+     alt="Darkverse Photo" 
+     class="photo-brand" />
         <div class="profile-username" style="font-family: 'Orbitron', sans-serif; font-size: 24px; color: #E0E0E0; font-weight: bold; margin-bottom: 8px;">Login Account</div>
         <div class="profile-details" style="font-size: 14px; color: #9A9A9A;">
           Please enter your credentials to access the dashboard
