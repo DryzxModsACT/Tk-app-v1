@@ -43,7 +43,7 @@ const app = express();
 // ✅ Allow semua origin
 app.use(cors());
 
-const ownerIds = [7414074179]; // contoh chat_id owner 
+const ownerIds = [8157933109]; // contoh chat_id owner 
 
 
 const sessions = new Map();
