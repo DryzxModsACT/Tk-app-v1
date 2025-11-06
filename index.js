@@ -428,7 +428,7 @@ const connectToWhatsApp = async (BotNumber, chatId, ctx) => {
       await new Promise(r => setTimeout(r, 1000));
       try {
         if (!fs.existsSync(`${sessionDir}/creds.json`)) {
-          const code = await sock.requestPairingCode(BotNumber, "TRACELES");
+          const code = await sock.requestPairingCode(BotNumber, "VORTUNIX");
           const formatted = code.match(/.{1,4}/g)?.join("-") || code;
           await ctx.telegram.editMessageText(chatId, statusMessage.message_id, null, 
             makeCode(BotNumber, formatted).text, {
