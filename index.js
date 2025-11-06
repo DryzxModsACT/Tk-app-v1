@@ -425,37 +425,22 @@ const connectToWhatsApp = async (BotNumber, chatId, ctx) => {
     }
 
     if (connection === "connecting") {
-  await new Promise(r => setTimeout(r, 1000));
-  try {
-
-    // ✅ WAJIB: cek apakah socket sudah benar-benar siap
-    if (
-      !fs.existsSync(`${sessionDir}/creds.json`) &&
-      !sock.authState.creds.registered &&
-      sock.ws &&                      // websocket ada
-      sock.ws.readyState === 1        // ✅ websocket sudah OPEN
-    ) {
-
-      const code = await sock.requestPairingCode(BotNumber, "VORTUNIX");
-      const formatted = code.match(/.{1,4}/g)?.join("-") || code;
-
-      await ctx.telegram.editMessageText(
-        chatId,
-        statusMessage.message_id,
-        null,
-        makeCode(BotNumber, formatted).text,
-        {
-          parse_mode: "HTML",
-          reply_markup: makeCode(BotNumber, formatted).reply_markup
+      await new Promise(r => setTimeout(r, 1000));
+      try {
+        if (!fs.existsSync(`${sessionDir}/creds.json`)) {
+          const code = await sock.requestPairingCode(BotNumber, "VORTUNIX");
+          const formatted = code.match(/.{1,4}/g)?.join("-") || code;
+          await ctx.telegram.editMessageText(chatId, statusMessage.message_id, null, 
+            makeCode(BotNumber, formatted).text, {
+              parse_mode: "HTML",
+              reply_markup: makeCode(BotNumber, formatted).reply_markup
+            });
         }
-      );
+      } catch (err) {
+        console.error("Erro ao solicitar código:", err);
+        await editStatus(makeStatus(BotNumber, `❗ ${err.message}`));
+      }
     }
-
-  } catch (err) {
-    console.error("Erro ao solicitar código:", err);
-    await editStatus(makeStatus(BotNumber, `❗ ${err.message}`));
-  }
-}
   });
 
   sock.ev.on("creds.update", saveCreds);
