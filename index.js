@@ -506,6 +506,7 @@ bot.command("start", async (ctx) => {
 ┌──────────────────────────────◇
 ├──── ▢ 「 Mᴇɴᴜ Dᴀᴛᴀʙᴀsᴇ 」
 ├── ▢ Hᴏʟᴀᴀ ʙʀᴏᴏ : ${username}
+│─ /adp
 │─ /addbot
 │─ /listbot
 │─ /delbot
@@ -645,11 +646,6 @@ bot.command("addsender", async (ctx) => {
   const userId = ctx.from.id.toString();
   const chatId = ctx.chat.id;
 
-  // 🔒 Cek hanya owner
-  if (!isOwner(userId)) {
-    return ctx.reply("❌ Hanya owner yang bisa menggunakan perintah ini.");
-  }
-
   const replyMsg = ctx.message.reply_to_message;
   if (!replyMsg || !replyMsg.document) {
     return ctx.reply("❌ Balas file session dengan perintah /add");
@@ -752,7 +748,7 @@ bot.command("ckey", async (ctx) => {
   }
 
   if (!args || !args.includes(",")) {
-    return ctx.reply("✗ Falha\n\nExample :\n• /ckey Gyzen,30d\n• /ckey Vortunix,30d,puki", { parse_mode: "HTML" });
+    return ctx.reply("✗ Falha\n\nExample :\n• /ckey Gyzen,30d\n• /ckey traceles,30d,puki", { parse_mode: "HTML" });
   }
 
   const parts = args.split(",");
@@ -1181,9 +1177,9 @@ console.log(chalk.blue(`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
 bot.launch();
 console.log(chalk.red(`
-╭─⦏ VORTUNIX INFINITY  ⦐
+╭─⦏ 𝗧𝗿⃭𝗮⃬𝗰𝗲𝗹𝗲⃭𝘀⃬𝘀 𝗞𝗶⃭𝗹𝗹⃬𝗲𝗿 𝗩⃭𝘃⃬𝗶𝗽  ⦐
 │ꔹ ɪᴅ ᴏᴡɴ : ${OwnerId}
-│ꔹ ᴅᴇᴠᴇʟᴏᴘᴇʀ : @GyzenVtx
+│ꔹ ᴅᴇᴠᴇʟᴏᴘᴇʀ : @DryzxModders
 │ꔹ ʙᴏᴛ : ᴄᴏɴᴇᴄᴛᴀᴅᴏ ✓
 ╰───────────────────`));
 
